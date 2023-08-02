@@ -15,12 +15,18 @@ library(dplyr)
 En los siguientes gráficos, agregá título, etiquetas de los ejes y texto alternativo: 
 
 ```{r}
-#' fig.alt: ____
+ggplot(pinguinos, aes(especie)) +
+  geom_bar() 
+```
+
+
+```{r}
+#' fig.alt: Cantidad de pinguinos según especie
 ggplot(pinguinos, aes(especie)) +
   geom_bar() +
-  labs(title = ____,
-       x = ____
-       y = ____)
+  labs(title = "Cantidad de pingüinos por especie",
+       x = "Especie",
+       y = "Cantidad de pinguinos")
 ```
 
 
@@ -59,7 +65,7 @@ paises |>
   filter(anio == max(anio)) |> 
   ggplot(aes(pib_per_capita, esperanza_de_vida)) +
   geom_point() +
-  # ggforce::geom_mark_circle(aes(filter = ____, label = pais, group = pais)) +
+  ggforce::geom_mark_circle(aes(filter = `esperanza_de_vida`<60, filter = `pib_per_capita` > 9000, label = pais, group = pais)) +
   NULL
   
   
